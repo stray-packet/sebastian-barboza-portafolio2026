@@ -9,6 +9,11 @@
      (og:url y canonical deben usar la URL absoluta real para compartir en redes):
 <link rel="canonical" href="https://TU-DOMINIO/">
 <meta property="og:url" content="https://TU-DOMINIO/"> -->
+<!-- The two webfonts are referenced from inside the stylesheet, so the browser
+     only discovers them after parsing all the CSS. Preloading them starts the
+     fetch immediately and removes the flash of fallback text. -->
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/ZalandoSansSemiExpanded-VariableFont_wght.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/PlayfairDisplay-Italic.woff2" crossorigin>
 <link rel="icon" type="image/png" href="./images/favicon-portafolio.png">
 <link rel="apple-touch-icon" href="./images/favicon-portafolio.png">
 <meta name="theme-color" content="#1a2911">
@@ -627,17 +632,17 @@
 
       <div class="cat-group">
         <div class="gallery in" data-reveal="blur" style="transition-delay: 0.16s;">
-          <div class="cover" style="--rot:-3deg;--dy:18px;--delay:0s" data-cursor="" data-project="coply"><div class="cover-inner c-coply has-img"><img src="./images/project-thumbnails/coply-manager.jpg" alt="Coply Manager" style="object-position:center" decoding="async" fetchpriority="high"><div class="cover-art"><span class="cat" data-i18n="cover.cat.coply">SaaS · Producto propio en producción</span><span class="t">Coply Manager</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
-          <div class="cover" style="--rot:2deg;--dy:0px;--delay:.6s" data-cursor="" data-project="tyc"><div class="cover-inner c-tyc has-img"><img src="./images/project-thumbnails/olimpo-2-dias-2-horas.jpg" alt="De 2 días a 2 horas" style="object-position:center" decoding="async" fetchpriority="high"><div class="cover-art"><span class="cat" data-i18n="cover.cat.tyc">Automatización de Contenido Legal</span><span class="t" data-i18n="cover.t.tyc">De 2 días a 2 horas</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
-          <div class="cover" style="--rot:-2deg;--dy:24px;--delay:1.2s" data-cursor="" data-project="gamestudio"><div class="cover-inner c-gamestudio has-img"><img src="./images/project-thumbnails/olimpo-game-studio.jpg" alt="Olimpo Game Studio" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.gamestudio">Marketing Gamificado · Olimpo.bet</span><span class="t">Olimpo Game Studio</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
-          <div class="cover" style="--rot:3deg;--dy:8px;--delay:.9s" data-cursor="" data-project="leon"><div class="cover-inner c-leon has-img"><img src="./images/project-thumbnails/leon-security.jpg" alt="León Security" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.leon">Figma + Claude Code</span><span class="t">León Security</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:-3deg;--dy:18px;--delay:0s" data-cursor="" data-project="coply"><div class="cover-inner c-coply has-img"><img src="./images/project-thumbnails/coply-manager.jpg" alt="Coply Manager" width="1299" height="1699" style="object-position:center" decoding="async" fetchpriority="high"><div class="cover-art"><span class="cat" data-i18n="cover.cat.coply">SaaS · Producto propio en producción</span><span class="t">Coply Manager</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:2deg;--dy:0px;--delay:.6s" data-cursor="" data-project="tyc"><div class="cover-inner c-tyc has-img"><img src="./images/project-thumbnails/olimpo-2-dias-2-horas.jpg" alt="De 2 días a 2 horas" width="1299" height="1699" style="object-position:center" decoding="async" fetchpriority="high"><div class="cover-art"><span class="cat" data-i18n="cover.cat.tyc">Automatización de Contenido Legal</span><span class="t" data-i18n="cover.t.tyc">De 2 días a 2 horas</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:-2deg;--dy:24px;--delay:1.2s" data-cursor="" data-project="gamestudio"><div class="cover-inner c-gamestudio has-img"><img src="./images/project-thumbnails/olimpo-game-studio.jpg" alt="Olimpo Game Studio" width="1299" height="1699" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.gamestudio">Marketing Gamificado · Olimpo.bet</span><span class="t">Olimpo Game Studio</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:3deg;--dy:8px;--delay:.9s" data-cursor="" data-project="leon"><div class="cover-inner c-leon has-img"><img src="./images/project-thumbnails/leon-security.jpg" alt="León Security" width="1299" height="1699" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.leon">Figma + Claude Code</span><span class="t">León Security</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
         </div>
       </div>
 
       <div class="cat-group">
         <div class="gallery in" data-reveal="blur" style="transition-delay: 0s;">
-          <div class="cover" style="--rot:3deg;--dy:0px;--delay:.8s" data-cursor="" data-project="kambi"><div class="cover-inner c-kambi has-img"><img src="./images/project-thumbnails/kambi-knowledge-base.jpg" alt="Kambi Knowledge Base" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.kambi">Base de Conocimiento con IA</span><span class="t">Kambi Knowledge Base</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
-          <div class="cover" style="--rot:-3deg;--dy:22px;--delay:1.1s" data-cursor="" data-project="modulos"><div class="cover-inner c-modulos has-img"><img src="./images/project-thumbnails/modulos-olimpo.jpg" alt="Módulos Olimpo.bet" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.modulos">Web · Mobile</span><span class="t" data-i18n="cover.t.modulos">Módulos Olimpo.bet</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:3deg;--dy:0px;--delay:.8s" data-cursor="" data-project="kambi"><div class="cover-inner c-kambi has-img"><img src="./images/project-thumbnails/kambi-knowledge-base.jpg" alt="Kambi Knowledge Base" width="1299" height="1699" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.kambi">Base de Conocimiento con IA</span><span class="t">Kambi Knowledge Base</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+          <div class="cover" style="--rot:-3deg;--dy:22px;--delay:1.1s" data-cursor="" data-project="modulos"><div class="cover-inner c-modulos has-img"><img src="./images/project-thumbnails/modulos-olimpo.jpg" alt="Módulos Olimpo.bet" width="1299" height="1699" style="object-position:center" loading="lazy" decoding="async"><div class="cover-art"><span class="cat" data-i18n="cover.cat.modulos">Web · Mobile</span><span class="t" data-i18n="cover.t.modulos">Módulos Olimpo.bet</span></div></div><span class="view"><span data-i18n="cover.view">Ver caso</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
         </div>
       </div>
     </div>
@@ -657,9 +662,9 @@
     <div class="wrap">
       <div class="section-head in" data-reveal="" style="transition-delay: 0.24s;"><span class="idx" data-i18n="about.idx">02 - Sobre mí</span><h2 data-i18n-html="about.h2">Hola, soy <span class="serif">Sebastian</span></h2></div>
       <div class="about-photos">
-        <div class="ph in" data-reveal="" style="--r: -3deg; transition-delay: 0s;"><img src="./images/about/sebastian-barboza-1.jpg" alt="Sebastian Barboza" loading="lazy"></div>
-        <div class="ph in" data-reveal="" style="--r: 2deg; transition-delay: 0.08s;"><img src="./images/about/sebastian-barboza-2.jpg" alt="Sebastian Barboza" loading="lazy"></div>
-        <div class="ph in" data-reveal="" style="--r: -2deg; transition-delay: 0.16s;"><img src="./images/about/sebastian-barboza-3.jpg" alt="Sebastian Barboza" loading="lazy"></div>
+        <div class="ph in" data-reveal="" style="--r: -3deg; transition-delay: 0s;"><img src="./images/about/sebastian-barboza-1.jpg" alt="Sebastian Barboza" width="500" height="600" loading="lazy" decoding="async"></div>
+        <div class="ph in" data-reveal="" style="--r: 2deg; transition-delay: 0.08s;"><img src="./images/about/sebastian-barboza-2.jpg" alt="Sebastian Barboza" width="500" height="600" loading="lazy" decoding="async"></div>
+        <div class="ph in" data-reveal="" style="--r: -2deg; transition-delay: 0.16s;"><img src="./images/about/sebastian-barboza-3.jpg" alt="Sebastian Barboza" width="500" height="600" loading="lazy" decoding="async"></div>
       </div>
       <div class="about-grid">
         <div class="about-lead in" data-reveal="" style="transition-delay: 0.24s;">
@@ -744,8 +749,8 @@
       <div id="mLeadWrap">
         <div id="gamestudioLead" class="proj-lead" hidden="">
           <div class="pg-video cs-reveal">
-            <video autoplay muted loop playsinline poster="./images/project-mockups/olimpo-gamestudio/analitica.png" preload="none">
-              <source src="./images/project-mockups/olimpo-gamestudio/olimpo-gamestudio-highlight.mp4" type="video/mp4">
+            <video muted loop playsinline data-poster="./images/project-mockups/olimpo-gamestudio/analitica.png" preload="none">
+              <source type="video/mp4" data-src="./images/project-mockups/olimpo-gamestudio/olimpo-gamestudio-highlight.mp4">
             </video>
           </div>
           <div class="cs-reveal" style="margin-top:24px">
@@ -758,7 +763,7 @@
           </div>
         </div>
         <div id="coplyLead" class="proj-lead" hidden="">
-          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/coply-manager/coply-manager-hero.mp4" autoplay loop muted playsinline preload="none"></video>
+          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" loop muted playsinline preload="none" data-src="./images/project-mockups/coply-manager/coply-manager-hero.mp4"></video>
           <div class="coply-grid cs-reveal">
             <div class="coply-feat"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><h4 data-i18n="g.coply.f1.h">Control de Caja</h4><p data-i18n="g.coply.f1.p">Apertura, cierre y arqueo diario con historial completo</p></div>
             <div class="coply-feat"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h4 data-i18n="g.coply.f2.h">Bóveda</h4><p data-i18n="g.coply.f2.p">Registro y trazabilidad de todos los movimientos de efectivo</p></div>
@@ -769,7 +774,7 @@
           </div>
         </div>
         <div id="tycLead" class="proj-lead" hidden="">
-          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/2dias-a-2horas/2dias-a-2horas-hero.mp4" autoplay loop muted playsinline preload="none"></video>
+          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" loop muted playsinline preload="none" data-src="./images/project-mockups/2dias-a-2horas/2dias-a-2horas-hero.mp4"></video>
           <div class="cs-reveal" style="margin-top:24px">
             <span class="lima-tag" data-i18n="tg.aiide">IDE con IA</span><span class="lima-tag">Prompt Engineering</span><span class="lima-tag">Design Systems</span><span class="lima-tag" data-i18n="tg.automation">Automatización</span>
           </div>
@@ -780,7 +785,7 @@
           </div>
         </div>
         <div id="leonLead" class="proj-lead" hidden="">
-          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/leon-security/leon-security-web.mp4" autoplay loop muted playsinline preload="none"></video>
+          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" loop muted playsinline preload="none" data-src="./images/project-mockups/leon-security/leon-security-web.mp4"></video>
           <div class="cs-reveal" style="margin-top:24px">
             <span class="lima-tag">Figma</span><span class="lima-tag">Claude Code</span><span class="lima-tag">Landing Page</span>
           </div>
@@ -796,7 +801,7 @@
           </div>
         </div>
         <div id="kambiLead" class="proj-lead" hidden="">
-          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/kambi/kambi-highlight.mp4" autoplay loop muted playsinline preload="none"></video>
+          <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" loop muted playsinline preload="none" data-src="./images/project-mockups/kambi/kambi-highlight.mp4"></video>
           <div class="cs-reveal" style="margin-top:24px">
             <span class="lima-tag">Antigravity</span><span class="lima-tag" data-i18n="tg.automation">Automatización</span><span class="lima-tag" data-i18n="tg.techdocs">Documentación técnica</span>
           </div>
@@ -815,10 +820,10 @@
           </div>
         </div>
         <div id="transmiLead" class="proj-lead" hidden="">
-          <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/17-how-to-ride-transmilenio-full-book-overview-36933790.jpg" alt="How to Ride Transmilenio - full book overview" loading="lazy" decoding="async"></div>
+          <div class="pg-row pg-full cs-reveal"><img alt="How to Ride Transmilenio - full book overview" loading="lazy" decoding="async" data-src="./images/archive-editorial/17-how-to-ride-transmilenio-full-book-overview-36933790.jpg"></div>
         </div>
         <div id="bookLead" class="proj-lead" hidden="">
-          <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/18-desde-que-llegaste-book-cover-e529ad57.jpg" alt="Desde que llegaste - book cover" loading="lazy" decoding="async"></div>
+          <div class="pg-row pg-full cs-reveal"><img alt="Desde que llegaste - book cover" loading="lazy" decoding="async" data-src="./images/archive-editorial/18-desde-que-llegaste-book-cover-e529ad57.jpg"></div>
         </div>
       </div>
       <div class="cs-block"><span class="tag-lbl" data-i18n="case.tag.overview">Resumen</span><div class="cs-text" id="mOverview"></div></div>
@@ -835,8 +840,8 @@
           <div class="ogs-feat cs-reveal"><span class="step-n">3</span><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.152A4 4 0 0 0 17.32 5z"/></svg></span><h4 data-i18n="g.ogs.f3.h">Creador de Plantillas de Juego</h4><p data-i18n="g.ogs.f3.p">Edita el contenido y la mecánica del juego (ej. cartas) que vivirá el usuario final de la campaña</p></div>
         </div>
 
-        <div class="pg-row pg-2 cs-reveal"><img src="./images/project-mockups/olimpo-gamestudio/campañas.png" alt="Constructor de Campañas" loading="lazy" decoding="async"><img src="./images/project-mockups/olimpo-gamestudio/analitica.png" alt="Dashboard y Analítica de campañas" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-2 cs-reveal"><img src="./images/project-mockups/olimpo-gamestudio/audiencias.png" alt="Creador de Audiencias" loading="lazy" decoding="async"><img src="./images/project-mockups/olimpo-gamestudio/platilla-juego.png" alt="Creador de Plantillas de Juego" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-2 cs-reveal"><img alt="Constructor de Campañas" loading="lazy" decoding="async" data-src="./images/project-mockups/olimpo-gamestudio/campañas.png"><img alt="Dashboard y Analítica de campañas" loading="lazy" decoding="async" data-src="./images/project-mockups/olimpo-gamestudio/analitica.png"></div>
+        <div class="pg-row pg-2 cs-reveal"><img alt="Creador de Audiencias" loading="lazy" decoding="async" data-src="./images/project-mockups/olimpo-gamestudio/audiencias.png"><img alt="Creador de Plantillas de Juego" loading="lazy" decoding="async" data-src="./images/project-mockups/olimpo-gamestudio/platilla-juego.png"></div>
 
         <span class="pg-label cs-reveal" data-i18n="g.lbl.flowsupport">Soporte al flujo</span>
         <div class="ogs-grid-sm">
@@ -844,15 +849,15 @@
           <div class="ogs-feat-sm cs-reveal"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span><div><h4 data-i18n="g.ogs.s2.h">Calendario de Campañas</h4><p data-i18n="g.ogs.s2.p">Planifica lanzamientos y vigencias</p></div></div>
         </div>
 
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/olimpo-gamestudio/campañas-calendario.png" alt="Calendario de Campañas" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Calendario de Campañas" loading="lazy" decoding="async" data-src="./images/project-mockups/olimpo-gamestudio/campañas-calendario.png"></div>
 
         <div class="coply-egg cs-reveal">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px;margin-right:2px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span data-i18n-html="g.egg.ogs"><strong>Cómo se conecta todo:</strong> en el Constructor de Campañas se enlaza la audiencia segmentada, los disparadores predeterminados y la plantilla de juego creada. Un mismo sistema, un solo flujo, sin pasar por 4 herramientas distintas.</span>
         </div>
 
         <div class="pg-video cs-reveal">
-          <video autoplay muted loop playsinline poster="./images/project-mockups/olimpo-gamestudio/campañas.png" preload="none">
-            <source src="./images/project-mockups/olimpo-gamestudio/olimpo-gamestudio-constructor.mp4" type="video/mp4">
+          <video muted loop playsinline data-poster="./images/project-mockups/olimpo-gamestudio/campañas.png" preload="none">
+            <source type="video/mp4" data-src="./images/project-mockups/olimpo-gamestudio/olimpo-gamestudio-constructor.mp4">
           </video>
         </div>
 
@@ -875,15 +880,15 @@
       <div id="coplyGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="g.lbl.screens">Capturas del sistema</span>
         <div class="pg-row pg-3 cs-reveal">
-          <img src="./images/project-mockups/coply-manager/arqueo-caja.png" alt="Arqueo de Caja" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/boveda.png" alt="Bóveda" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/horario.png" alt="Gestor de Horarios" loading="lazy" decoding="async">
+          <img alt="Arqueo de Caja" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/arqueo-caja.png">
+          <img alt="Bóveda" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/boveda.png">
+          <img alt="Gestor de Horarios" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/horario.png">
         </div>
 
         <div class="pg-row pg-3 cs-reveal">
-          <img src="./images/project-mockups/coply-manager/coply-capturas-1.png" alt="Captura del sistema Coply Manager 1" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/coply-capturas-2.png" alt="Captura del sistema Coply Manager 2" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/coply-capturas-4.png" alt="Captura del sistema Coply Manager 4" loading="lazy" decoding="async">
+          <img alt="Captura del sistema Coply Manager 1" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-capturas-1.png">
+          <img alt="Captura del sistema Coply Manager 2" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-capturas-2.png">
+          <img alt="Captura del sistema Coply Manager 4" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-capturas-4.png">
         </div>
 
         <div class="coply-side cs-reveal">
@@ -897,14 +902,14 @@
           </ul>
         </div>
 
-        <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/coply-manager/coply-manager-calendar.mp4" autoplay loop muted playsinline preload="none"></video>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/coply-manager/horario-2.png" alt="Gestor de Horarios 2" loading="lazy" decoding="async"></div>
+        <video class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" loop muted playsinline preload="none" data-src="./images/project-mockups/coply-manager/coply-manager-calendar.mp4"></video>
+        <div class="pg-row pg-full cs-reveal"><img alt="Gestor de Horarios 2" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/horario-2.png"></div>
 
         <div class="coply-egg cs-reveal">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px;margin-right:2px"><path d="M2 9a3 3 0 1 0 0 6v2a2 2 0 0 0 2 2h3.4a.6.6 0 0 0 .4-1L6.2 16.4a.6.6 0 0 1 .4-1H13a2 2 0 0 0 2-2v-1"/><path d="M17.5 7H22v9h-1.5"/><path d="M2 9V7a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v6"/><path d="M6 22v-4"/><path d="M13.5 22H12"/></svg> <span data-i18n-html="g.egg.coply"><strong>Calculadora de Stickers de Fidelidad:</strong> un widget flotante tipo mini-popover: ingresas el monto de la compra y calcula automáticamente cuántos stickers de fidelidad corresponde entregar. Un detalle pequeño en alcance, pero que muestra atención real a la operación diaria del negocio.</span>
         </div>
 
-        <div class="pg-row pg-full pg-cap cs-reveal"><img src="./images/project-mockups/coply-manager/coply-capturas-3.png" alt="Captura del sistema Coply Manager 3" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full pg-cap cs-reveal"><img alt="Captura del sistema Coply Manager 3" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-capturas-3.png"></div>
 
         <div class="coply-side cs-reveal">
           <h4 data-i18n="g.coply.discord.h">Discord como centro de notificaciones</h4>
@@ -912,9 +917,9 @@
         </div>
 
         <div class="pg-row pg-3 pg-3-eq cs-reveal">
-          <img src="./images/project-mockups/coply-manager/coply-discord-1.png" alt="Notificaciones de Discord 1" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/coply-discord-2.png" alt="Notificaciones de Discord 2" loading="lazy" decoding="async">
-          <img src="./images/project-mockups/coply-manager/coply-discord-3.png" alt="Notificaciones de Discord 3" loading="lazy" decoding="async">
+          <img alt="Notificaciones de Discord 1" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-discord-1.png">
+          <img alt="Notificaciones de Discord 2" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-discord-2.png">
+          <img alt="Notificaciones de Discord 3" loading="lazy" decoding="async" data-src="./images/project-mockups/coply-manager/coply-discord-3.png">
         </div>
 
         <div class="cta-stripe cs-reveal">
@@ -1113,7 +1118,7 @@ Column 6: Point Multiplier (1x, 1.1x, 1.2x, 1.5x, 2x, 2.5x, 3x, 5x)
 Use the <span class="str">tyc_architecture_pipeline.md</span> to parse the hierarchy (H1, H2, H3) and insert the table in the correct spot.
 Apply the <span class="str">design_system.md</span> to ensure the table uses the Floating Pill design and the Mobile Sticky Protocol (with the vertical shadow shield and 150px wrapping for the Tier names).</div>
         </div>
-        <img class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" src="./images/project-mockups/2dias-a-2horas/2dias-a-2horas-resultado.png" alt="Resultado del pipeline: página de T&amp;C generada" loading="lazy" decoding="async">
+        <img class="wide cs-reveal" style="width:100%;border-radius:16px;display:block" alt="Resultado del pipeline: página de T&amp;C generada" loading="lazy" decoding="async" data-src="./images/project-mockups/2dias-a-2horas/2dias-a-2horas-resultado.png">
 
         <div class="cta-stripe cs-reveal">
           <div class="marquee-track">
@@ -1134,8 +1139,8 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       <div id="leonGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="g.lbl.figmadesign">Diseño en Figma</span>
         <div class="compare-pair leon-figma-mobile cs-reveal">
-          <div><div class="cap" data-i18n="g.cap.figma">Figma</div><img class="figma-shot" src="./images/project-mockups/leon-security/leon-security-figma.png" alt="Diseño de León Security en Figma" loading="lazy" decoding="async"></div>
-          <div><div class="cap" data-i18n="g.cap.mobile">Mobile</div><div class="pg-video gif-ph mobile"><video autoplay loop muted playsinline src="./images/project-mockups/leon-security/leon-security-mobile.mp4" preload="none"></video></div></div>
+          <div><div class="cap" data-i18n="g.cap.figma">Figma</div><img class="figma-shot" alt="Diseño de León Security en Figma" loading="lazy" decoding="async" data-src="./images/project-mockups/leon-security/leon-security-figma.png"></div>
+          <div><div class="cap" data-i18n="g.cap.mobile">Mobile</div><div class="pg-video gif-ph mobile"><video loop muted playsinline preload="none" data-src="./images/project-mockups/leon-security/leon-security-mobile.mp4"></video></div></div>
         </div>
 
         <div class="coply-egg cs-reveal">
@@ -1146,9 +1151,9 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
         <div class="coply-egg cs-reveal">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px;margin-right:2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> <span data-i18n-html="g.egg.leon.cms"><strong>Editable sin tocar código:</strong> integré Sveltia CMS a la landing para que el equipo de León Security pueda actualizar textos, imágenes y secciones del sitio directamente, sin depender de un desarrollador. Son múltiples secciones editables desde el panel, entre ellas el apartado del blog.</span>
         </div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/leon-security/sveltia-cms-1.png" alt="Sveltia CMS conectado al proyecto - paso 1" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/leon-security/sveltia-cms-2.png" alt="Sveltia CMS conectado al proyecto - paso 2" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/leon-security/sveltia-cms-3.png" alt="Sveltia CMS conectado al proyecto - paso 3" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Sveltia CMS conectado al proyecto - paso 1" loading="lazy" decoding="async" data-src="./images/project-mockups/leon-security/sveltia-cms-1.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Sveltia CMS conectado al proyecto - paso 2" loading="lazy" decoding="async" data-src="./images/project-mockups/leon-security/sveltia-cms-2.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Sveltia CMS conectado al proyecto - paso 3" loading="lazy" decoding="async" data-src="./images/project-mockups/leon-security/sveltia-cms-3.png"></div>
 
         <div class="cta-stripe cs-reveal">
           <div class="marquee-track">
@@ -1211,8 +1216,8 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       </div>
       <div id="kambiGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="g.lbl.problem">El problema: todo manual, artículo por artículo</span>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/kambi/kambi-web-docs.png" alt="Sitio docs.kambipartner.com con el sidebar de artículos" loading="lazy"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/kambi/kambi-web-docs-copy-markdown-button.png" alt="Botón Use with AI / Copy as Markdown en un artículo individual" loading="lazy"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Sitio docs.kambipartner.com con el sidebar de artículos" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Botón Use with AI / Copy as Markdown en un artículo individual" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs-copy-markdown-button.png"></div>
 
         <span class="pg-label cs-reveal" data-i18n="g.lbl.howbuilt">Cómo se construyó</span>
         <div class="tc-console cs-reveal">
@@ -1243,7 +1248,7 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
         </div>
 
         <span class="pg-label cs-reveal" data-i18n="g.lbl.result">El resultado</span>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/project-mockups/kambi/kambi-result.png" alt="Consulta sobre viabilidad de un rediseño respondida con la documentación de Kambi" loading="lazy"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Consulta sobre viabilidad de un rediseño respondida con la documentación de Kambi" loading="lazy" data-src="./images/project-mockups/kambi/kambi-result.png"></div>
         <div class="coply-egg cs-reveal">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px;margin-right:2px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> <span data-i18n-html="g.egg.kambi.now">Ahora solo hago la consulta sobre el rediseño que quiero aplicar, y es la IA la que responde qué es viable y qué no, consultando directamente la documentación de Kambi.</span>
         </div>
@@ -1267,35 +1272,35 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       <div id="modulosGallery" class="proj-gallery" hidden="">
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.casino">Casino</div><a class="row-cta" href="https://www.olimpo.bet/casino" target="_blank" rel="noopener" data-module="casino"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/casino-web.png" alt="Módulo Casino - versión web" loading="lazy"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/casino-mobile.png" alt="Módulo Casino - versión mobile" loading="lazy"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Casino - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-web.png"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Casino - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-mobile.png"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Casino</div>
-          <img class="figma-shot" src="./images/project-mockups/diseños-olimpo/casino-figma.png" alt="Handoff de Figma - Módulo Casino" loading="lazy">
+          <img class="figma-shot" alt="Handoff de Figma - Módulo Casino" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-figma.png">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.tournaments">Torneos</div><a class="row-cta" href="https://www.olimpo.bet/torneos/Torneo_Apuestas_AADD" target="_blank" rel="noopener" data-module="torneos"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/torneos-web.png" alt="Módulo Torneos - versión web" loading="lazy"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/torneos-mobile.png" alt="Módulo Torneos - versión mobile" loading="lazy"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Torneos - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-web.png"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Torneos - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-mobile.png"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Torneos</div>
-          <img class="figma-shot" src="./images/project-mockups/diseños-olimpo/torneos-figma.png" alt="Handoff de Figma - Módulo Torneos" loading="lazy">
+          <img class="figma-shot" alt="Handoff de Figma - Módulo Torneos" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-figma.png">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.pool">Polla Privada</div><a class="row-cta" href="https://www.olimpo.bet/la-polla" target="_blank" rel="noopener" data-module="polla"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/polla-privada-web.png" alt="Módulo Polla Privada - versión web" loading="lazy"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/polla-privada-mobile.png" alt="Módulo Polla Privada - versión mobile" loading="lazy"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Polla Privada - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-web.png"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Polla Privada - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-mobile.png"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Polla Privada</div>
-          <img class="figma-shot" src="./images/project-mockups/diseños-olimpo/polla-privada-figma.png" alt="Handoff de Figma - Módulo Polla Privada" loading="lazy">
+          <img class="figma-shot" alt="Handoff de Figma - Módulo Polla Privada" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-figma.png">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.help">Centro de Ayuda</div><a class="row-cta" href="https://www.olimpo.bet/ayuda" target="_blank" rel="noopener" data-module="ayuda"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-web.png" alt="Módulo Centro de Ayuda con chatbot IA - versión web" loading="lazy"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-mobile.png" alt="Módulo Centro de Ayuda con chatbot IA - versión mobile" loading="lazy"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Centro de Ayuda con chatbot IA - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-web.png"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Centro de Ayuda con chatbot IA - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-mobile.png"></div></div></div>
         </div>
 
         <div class="cta-stripe cs-reveal">
@@ -1316,27 +1321,27 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       </div>
       <div id="transmiGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="pg.selectedspreads">Páginas seleccionadas</span>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/51-book-spread-374f0a1e.jpg" alt="Book spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/08-how-to-ride-transmilenio-441eb02e.jpg" alt="Book spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-2 cs-reveal"><img src="./images/archive-editorial/52-book-spread-6a135025.jpg" alt="Book spread" loading="lazy" decoding="async"><img src="./images/archive-editorial/53-book-spread-d5bc5937.jpg" alt="Book spread" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Book spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/51-book-spread-374f0a1e.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Book spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/08-how-to-ride-transmilenio-441eb02e.jpg"></div>
+        <div class="pg-row pg-2 cs-reveal"><img alt="Book spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/52-book-spread-6a135025.jpg"><img alt="Book spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/53-book-spread-d5bc5937.jpg"></div>
         <span class="pg-label cs-reveal" data-i18n="pg.patterns">Patrones</span>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/54-riso-pattern-artwork-fa781069.jpg" alt="Riso pattern artwork" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Riso pattern artwork" loading="lazy" decoding="async" data-src="./images/archive-editorial/54-riso-pattern-artwork-fa781069.jpg"></div>
       </div>
       <div id="bookGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="pg.thebook">El libro</span>
-        <div class="pg-row pg-2 cs-reveal"><img src="./images/archive-editorial/09-since-you-arrived-078dbf58.jpg" alt="Book cover mockup" loading="lazy" decoding="async"><img src="./images/archive-editorial/55-book-copies-mockup-b80daf4e.jpg" alt="Book copies mockup" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-2 cs-reveal"><img alt="Book cover mockup" loading="lazy" decoding="async" data-src="./images/archive-editorial/09-since-you-arrived-078dbf58.jpg"><img alt="Book copies mockup" loading="lazy" decoding="async" data-src="./images/archive-editorial/55-book-copies-mockup-b80daf4e.jpg"></div>
         <span class="pg-label cs-reveal" data-i18n="pg.interiorspreads">Páginas interiores</span>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/56-interior-spread-e6355d06.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/57-interior-spread-6dee21be.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/58-interior-spread-f975977a.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/59-interior-spread-fdaa2b4f.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/60-interior-spread-bb79e631.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/61-interior-spread-de00e685.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/62-interior-spread-c7574dae.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/63-interior-spread-7f435865.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
-        <div class="pg-row pg-full cs-reveal"><img src="./images/archive-editorial/64-interior-spread-57ba8db5.jpg" alt="Interior spread" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/56-interior-spread-e6355d06.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/57-interior-spread-6dee21be.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/58-interior-spread-f975977a.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/59-interior-spread-fdaa2b4f.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/60-interior-spread-bb79e631.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/61-interior-spread-de00e685.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/62-interior-spread-c7574dae.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/63-interior-spread-7f435865.jpg"></div>
+        <div class="pg-row pg-full cs-reveal"><img alt="Interior spread" loading="lazy" decoding="async" data-src="./images/archive-editorial/64-interior-spread-57ba8db5.jpg"></div>
         <span class="pg-label cs-reveal" data-i18n="pg.sketchtofinal">Del boceto al arte final</span>
-        <div class="pg-row pg-3 cs-reveal"><img src="./images/archive-editorial/65-cover-sketch-to-final-161aa8f0.jpg" alt="Cover: sketch to final" loading="lazy" decoding="async"><img src="./images/archive-editorial/66-spread-sketches-662e59f0.jpg" alt="Spread sketches" loading="lazy" decoding="async"><img src="./images/archive-editorial/67-spread-sketches-41f23726.jpg" alt="Spread sketches" loading="lazy" decoding="async"></div>
+        <div class="pg-row pg-3 cs-reveal"><img alt="Cover: sketch to final" loading="lazy" decoding="async" data-src="./images/archive-editorial/65-cover-sketch-to-final-161aa8f0.jpg"><img alt="Spread sketches" loading="lazy" decoding="async" data-src="./images/archive-editorial/66-spread-sketches-662e59f0.jpg"><img alt="Spread sketches" loading="lazy" decoding="async" data-src="./images/archive-editorial/67-spread-sketches-41f23726.jpg"></div>
       </div>
       <div class="cs-block" id="bOutcome" style="max-width:none"><span class="tag-lbl" data-i18n-html="case.tag.outcome">Resultado e impacto</span><h3 data-i18n="case.h3.outcome">Los resultados</h3><div class="cs-text" id="mOutcome" style="max-width:720px;margin-bottom:34px"></div><div class="impact" id="mImpact"></div></div>
       <div class="case-next" id="caseNext" data-cursor=""><span data-i18n="case.next">Siguiente proyecto</span><strong id="caseNextTitle"></strong></div>
@@ -1657,15 +1662,34 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
     caseObserver=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');caseObserver.unobserve(en.target);}})},{root:caseEl,threshold:0.12});
     requestAnimationFrame(()=>els.forEach(e=>caseObserver.observe(e)));
   }
-  /* Videos ship with preload="none" so the ~42MB of case-study footage is never
-     fetched on first paint. When a case opens we start only that case's videos,
-     and when it closes we pause them so nothing keeps decoding in the
-     background. */
+  /* All case-study media ships as data-src, not src. The modal is a full-height
+     position:fixed element, so the browser treats everything inside it as
+     near-viewport: loading="lazy" did NOT prevent the download, and autoplay
+     overrode preload="none". Deferring the URLs themselves is the only reliable
+     way to keep ~70MB of screenshots and footage off the initial load.
+     Each case hydrates only its own media, the first time it is opened. */
+  function hydrateCase(slug){
+    const scopes=[caseEl.querySelector('#'+slug+'Lead'),caseEl.querySelector('#'+slug+'Gallery')];
+    scopes.forEach(scope=>{
+      if(!scope)return;
+      scope.querySelectorAll('img[data-src]').forEach(img=>{
+        img.src=img.dataset.src;img.removeAttribute('data-src');
+      });
+      scope.querySelectorAll('video').forEach(v=>{
+        let touched=false;
+        if(v.dataset.poster){v.poster=v.dataset.poster;delete v.dataset.poster;}
+        if(v.dataset.src){v.src=v.dataset.src;delete v.dataset.src;touched=true;}
+        v.querySelectorAll('source[data-src]').forEach(sc=>{
+          sc.src=sc.dataset.src;sc.removeAttribute('data-src');touched=true;
+        });
+        if(touched)v.load();
+      });
+    });
+  }
   function syncCaseVideos(){
     caseEl.querySelectorAll('video').forEach(v=>{
       const shown=!!v.closest('.proj-lead:not([hidden]),.proj-gallery:not([hidden])');
       if(shown){
-        if(v.preload!=='auto'){v.preload='auto';v.load();}
         const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{});
       }else if(!v.paused){v.pause();}
     });
@@ -1675,6 +1699,8 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
   }
   function openCase(k){
     fill(k);
+    const slug=(P[k]&&P[k].custom)||k;
+    hydrateCase(slug);
     caseEl.querySelectorAll('.cs-block,.cs-gallery').forEach(e=>e.classList.add('cs-reveal'));
     caseEl.classList.remove('open');void caseEl.offsetWidth;
     caseEl.classList.add('open');caseEl.scrollTop=0;caseProg.style.width='0%';document.body.style.overflow='hidden';
