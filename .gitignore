@@ -30,3 +30,9 @@ npm-debug.log*
 # OS
 Thumbs.db
 .DS_Store
+
+# Personal / private
+CV.md
+
+# Vercel
+.vercel
