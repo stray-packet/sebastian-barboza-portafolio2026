@@ -70,12 +70,12 @@
   img{display:block;max-width:100%}
 
   /* liquid cursor */
-  #comets{position:fixed;inset:0;pointer-events:none;z-index:9999;filter:url(#goo) blur(1px);opacity:.55;mix-blend-mode:multiply}
-  .comet{position:absolute;top:0;left:0;border-radius:50%;will-change:transform;transition:background .5s ease}
+  #comets{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.55;mix-blend-mode:multiply;contain:strict}
+  .comet{position:absolute;top:0;left:0;border-radius:50%;will-change:transform;transition:background .5s ease;filter:blur(4px)}
   @media (hover:none){#comets{display:none}}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;max-width:calc(1300px + clamp(20px,5vw,64px) * 2);margin:0 auto;padding:22px clamp(20px,5vw,64px);color:var(--ink);transition:color .3s var(--ease),background .3s var(--ease),backdrop-filter .3s var(--ease)}
-  nav::before{content:"";position:fixed;top:0;left:0;right:0;height:78px;z-index:-1;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .3s var(--ease)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;max-width:calc(1300px + clamp(20px,5vw,64px) * 2);margin:0 auto;padding:22px clamp(20px,5vw,64px);color:var(--ink);transition:color .3s var(--ease),background .3s var(--ease)}
+  nav::before{content:"";position:fixed;top:0;left:0;right:0;height:78px;z-index:-1;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .3s var(--ease);contain:paint}
   nav.scrolled::before{opacity:1}
   body.on-light nav{color:var(--paper)}
   .brand{font-family:var(--font-display);font-weight:600;font-size:18px;display:inline-flex;align-items:center;gap:11px;letter-spacing:-.01em}
@@ -91,6 +91,13 @@
   /* Sections clip their own decorative overflow (blobs, auroras) so nothing
      can push the page wider than the viewport. */
   section{position:relative;padding:clamp(90px,13vw,180px) clamp(20px,5vw,64px);overflow-x:clip}
+  /* Everything below the fold still cost layout and paint on every frame even
+     while off-screen. content-visibility lets the browser skip that work until
+     each section scrolls close, which is most of the scroll cost on this page.
+     contain-intrinsic-size keeps the scrollbar honest while a section is
+     skipped, so the rail percentage does not jump around. The hero is left out
+     on purpose - it must paint immediately for LCP. */
+  .about,.services,.contact{content-visibility:auto;contain-intrinsic-size:auto 900px}
 
   /* hero */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:90px;overflow:hidden}
@@ -457,14 +464,21 @@
 
   /* hero aurora + sparkles */
   .hero-aurora{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .hero-aurora span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;mix-blend-mode:multiply;will-change:transform}
-  .hero-aurora span:nth-child(1){width:44vw;height:44vw;background:#133100;top:-12%;left:-6%;animation:aur1 16s ease-in-out infinite}
-  .hero-aurora span:nth-child(2){width:40vw;height:40vw;background:#133100;bottom:-16%;right:-4%;animation:aur2 20s ease-in-out infinite}
-  .hero-aurora span:nth-child(3){width:30vw;height:30vw;background:#0f1c08;top:28%;right:24%;animation:aur3 18s ease-in-out infinite}
+  .hero-aurora span{position:absolute;border-radius:50%;opacity:.28;mix-blend-mode:multiply;transform:translateZ(0)}
+  .hero-aurora span:nth-child(1){width:60vw;height:60vw;background:radial-gradient(closest-side,#133100,rgba(19,49,0,0) 70%);top:-20%;left:-14%;animation:aur1 16s ease-in-out infinite}
+  .hero-aurora span:nth-child(2){width:56vw;height:56vw;background:radial-gradient(closest-side,#133100,rgba(19,49,0,0) 70%);bottom:-24%;right:-12%;animation:aur2 20s ease-in-out infinite}
+  .hero-aurora span:nth-child(3){width:44vw;height:44vw;background:radial-gradient(closest-side,#0f1c08,rgba(15,28,8,0) 70%);top:21%;right:17%;animation:aur3 18s ease-in-out infinite}
   @keyframes aur1{50%{transform:translate(12%,10%) scale(1.15)}}
   @keyframes aur2{50%{transform:translate(-10%,-8%) scale(1.12)}}
   @keyframes aur3{50%{transform:translate(8%,-12%) scale(1.2)}}
   .hero.offscreen .sparkles i,.hero.offscreen .hero-aurora span{animation-play-state:paused}
+  /* Phones composite these large translucent layers on a much weaker GPU, and
+     the aurora is a background flourish nobody scrolls down for. Hold it still
+     there: the gradients still paint, they just stop animating. */
+  @media(max-width:820px){
+    .hero-aurora span{animation:none}
+    .blob{filter:blur(46px)}
+  }
   .sparkles{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
   .sparkles i{position:absolute;opacity:0;animation:spark linear infinite;font-style:normal;font-weight:600}
   @keyframes spark{0%{opacity:0;transform:translateY(24px) rotate(0deg) scale(.5)}20%{opacity:.9}80%{opacity:.9}100%{opacity:0;transform:translateY(-90px) rotate(180deg) scale(1)}}
@@ -557,11 +571,6 @@
 </style>
 </head>
 <body class="loaded">
-  <svg width="0" height="0" style="position:absolute"><defs>
-    <filter id="goo"><fegaussianblur in="SourceGraphic" stdDeviation="12" result="b"></fegaussianblur>
-    <fecolormatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="g"></fecolormatrix>
-    <feblend in="SourceGraphic" in2="g"></feblend></filter>
-  </defs></svg>
   <div id="comets"></div>
 
   <nav>
@@ -742,7 +751,7 @@
         <div><div class="l" data-i18n="case.category">Categoría</div><div class="v" id="mCat"></div></div>
         <div><div class="l" data-i18n="case.client">Cliente / Contexto</div><div class="v" id="mClient"></div></div>
       </div>
-      <div class="case-hero-img ph-img"><img id="mHeroImg" alt=""><span id="mHeroLbl">Hero image: 16:9</span></div>
+      <div class="case-hero-img ph-img"><img decoding="async" id="mHeroImg" alt=""><span id="mHeroLbl">Hero image: 16:9</span></div>
       <div id="mLeadWrap">
         <div id="gamestudioLead" class="proj-lead" hidden="">
           <div class="pg-video cs-reveal">
@@ -828,7 +837,7 @@
       <div class="cs-block" id="bObjective"><span class="tag-lbl" data-i18n="case.tag.objective">El objetivo</span><h3 data-i18n="case.h3.objective">Cómo se veía el éxito</h3><div class="cs-text" id="mObjective"></div></div>
       <div class="cs-block" id="bApproach"><span class="tag-lbl" data-i18n-html="case.tag.approach">Mi rol y enfoque</span><h3 data-i18n="case.h3.approach">Cómo trabajé</h3><div class="cs-text" id="mApproach"></div></div>
       <div class="cs-block" id="bSolution" style="max-width:none"><span class="tag-lbl" data-i18n="case.tag.solution">La solución</span><h3 data-i18n="case.h3.solution">Qué creé</h3><div class="cs-text" id="mSolution" style="max-width:720px"></div></div>
-      <div class="cs-gallery" id="mGallery"><div class="ph-img"><img alt=""><span>Image</span></div><div class="ph-img"><img alt=""><span>Image</span></div><div class="ph-img"><img alt=""><span>Full-width detail</span></div></div>
+      <div class="cs-gallery" id="mGallery"><div class="ph-img"><img decoding="async" alt=""><span>Image</span></div><div class="ph-img"><img decoding="async" alt=""><span>Image</span></div><div class="ph-img"><img decoding="async" alt=""><span>Full-width detail</span></div></div>
       <div id="gamestudioGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="g.lbl.mainflow">El flujo principal</span>
         <div class="ogs-grid">
@@ -1213,8 +1222,8 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       </div>
       <div id="kambiGallery" class="proj-gallery" hidden="">
         <span class="pg-label cs-reveal" data-i18n="g.lbl.problem">El problema: todo manual, artículo por artículo</span>
-        <div class="pg-row pg-full cs-reveal"><img alt="Sitio docs.kambipartner.com con el sidebar de artículos" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs.png"></div>
-        <div class="pg-row pg-full cs-reveal"><img alt="Botón Use with AI / Copy as Markdown en un artículo individual" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs-copy-markdown-button.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img decoding="async" alt="Sitio docs.kambipartner.com con el sidebar de artículos" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img decoding="async" alt="Botón Use with AI / Copy as Markdown en un artículo individual" loading="lazy" data-src="./images/project-mockups/kambi/kambi-web-docs-copy-markdown-button.png"></div>
 
         <span class="pg-label cs-reveal" data-i18n="g.lbl.howbuilt">Cómo se construyó</span>
         <div class="tc-console cs-reveal">
@@ -1245,7 +1254,7 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
         </div>
 
         <span class="pg-label cs-reveal" data-i18n="g.lbl.result">El resultado</span>
-        <div class="pg-row pg-full cs-reveal"><img alt="Consulta sobre viabilidad de un rediseño respondida con la documentación de Kambi" loading="lazy" data-src="./images/project-mockups/kambi/kambi-result.png"></div>
+        <div class="pg-row pg-full cs-reveal"><img decoding="async" alt="Consulta sobre viabilidad de un rediseño respondida con la documentación de Kambi" loading="lazy" data-src="./images/project-mockups/kambi/kambi-result.png"></div>
         <div class="coply-egg cs-reveal">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px;margin-right:2px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> <span data-i18n-html="g.egg.kambi.now">Ahora solo hago la consulta sobre el rediseño que quiero aplicar, y es la IA la que responde qué es viable y qué no, consultando directamente la documentación de Kambi.</span>
         </div>
@@ -1269,35 +1278,35 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       <div id="modulosGallery" class="proj-gallery" hidden="">
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.casino">Casino</div><a class="row-cta" href="https://www.olimpo.bet/casino" target="_blank" rel="noopener" data-module="casino"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Casino - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Casino - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-mobile.jpg"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Casino - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Casino - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-mobile.jpg"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Casino</div>
-          <img class="figma-shot" alt="Handoff de Figma - Módulo Casino" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-figma.jpg">
+          <img decoding="async" class="figma-shot" alt="Handoff de Figma - Módulo Casino" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/casino-figma.jpg">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.tournaments">Torneos</div><a class="row-cta" href="https://www.olimpo.bet/torneos/Torneo_Apuestas_AADD" target="_blank" rel="noopener" data-module="torneos"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Torneos - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Torneos - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-mobile.jpg"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Torneos - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Torneos - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-mobile.jpg"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Torneos</div>
-          <img class="figma-shot" alt="Handoff de Figma - Módulo Torneos" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-figma.jpg">
+          <img decoding="async" class="figma-shot" alt="Handoff de Figma - Módulo Torneos" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/torneos-figma.jpg">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.pool">Polla Privada</div><a class="row-cta" href="https://www.olimpo.bet/la-polla" target="_blank" rel="noopener" data-module="polla"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Polla Privada - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Polla Privada - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-mobile.jpg"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Polla Privada - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Polla Privada - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-mobile.jpg"></div></div></div>
         </div>
         <div class="figma-row cs-reveal">
           <div class="cap">Figma · Polla Privada</div>
-          <img class="figma-shot" alt="Handoff de Figma - Módulo Polla Privada" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-figma.jpg">
+          <img decoding="async" class="figma-shot" alt="Handoff de Figma - Módulo Polla Privada" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/polla-privada-figma.jpg">
         </div>
         <div class="device-row cs-reveal">
           <div class="row-title-wrap"><div class="row-title" data-i18n="g.mod.help">Centro de Ayuda</div><a class="row-cta" href="https://www.olimpo.bet/ayuda" target="_blank" rel="noopener" data-module="ayuda"><span data-i18n="g.mod.viewlive">Ver en producción</span> <span class="arw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></a></div>
-          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img alt="Módulo Centro de Ayuda con chatbot IA - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
-          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img alt="Módulo Centro de Ayuda con chatbot IA - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-mobile.jpg"></div></div></div>
+          <div class="mac-mock"><div class="screen"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Centro de Ayuda con chatbot IA - versión web" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-web.jpg"></div><div class="notch"></div></div><div class="base"></div></div>
+          <div class="iphone-mock"><div class="frame"><div class="screen-inner has-img"><img decoding="async" alt="Módulo Centro de Ayuda con chatbot IA - versión mobile" loading="lazy" data-src="./images/project-mockups/diseños-olimpo/centro-de-ayuda-mobile.jpg"></div></div></div>
         </div>
 
         <div class="cta-stripe cs-reveal">
@@ -1360,17 +1369,30 @@ Apply the <span class="str">design_system.md</span> to ensure the table uses the
       const s=46-i*3.4;d.style.width=d.style.height=s+'px';d.style.background=color;
       host.appendChild(d);dots.push({el:d,x:mx,y:my,s});
     }
-    addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+    let idle=0,lastColor=color,running=true;
+    addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;idle=0;if(!running){running=true;requestAnimationFrame(loop)}},{passive:true});
     let t=0;
-    (function loop(){
-      t+=0.05;let px=mx,py=my;
+    /* The trail used to hold a rAF loop open for the whole session, rewriting
+       eight transforms every frame even with the mouse parked. It now settles:
+       once the dots have caught up and nothing moves the loop stops, and the
+       next mousemove restarts it. */
+    function loop(){
+      t+=0.05;let px=mx,py=my,moved=0;
       dots.forEach((d,i)=>{
-        d.x+=(px-d.x)*(0.45-i*0.028);d.y+=(py-d.y)*(0.45-i*0.028);
+        const nx=d.x+(px-d.x)*(0.45-i*0.028), ny=d.y+(py-d.y)*(0.45-i*0.028);
+        moved=Math.max(moved,Math.abs(nx-d.x),Math.abs(ny-d.y));
+        d.x=nx;d.y=ny;
         const wob=Math.sin(t+i)*4, wob2=Math.cos(t*0.8+i)*4;
         d.el.style.transform=`translate(${d.x-d.s/2+wob}px,${d.y-d.s/2+wob2}px)`;
-        d.el.style.background=color;px=d.x;py=d.y;
-      });requestAnimationFrame(loop);
-    })();
+        if(color!==lastColor)d.el.style.background=color;
+        px=d.x;py=d.y;
+      });
+      lastColor=color;
+      idle=moved<0.05?idle+1:0;
+      if(idle>90){running=false;return;}
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
     const palette=['#C3F564','#a8e34a','#d8fa96','#8fce3a'];
     document.querySelectorAll('[data-cursor]').forEach((el,i)=>{
       el.addEventListener('mouseenter',()=>color=palette[i%palette.length]);
