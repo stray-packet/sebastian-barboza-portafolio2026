@@ -196,7 +196,7 @@
   .cat-label{display:inline-block;font-family:var(--font-display);font-weight:600;font-size:clamp(16px,2vw,18px);margin-bottom:26px;padding:6px 16px;background:var(--ink);color:var(--paper);border-radius:30px}
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(20px,2.6vw,40px);align-items:start}
   .cover{position:relative;cursor:pointer;transform:translateY(var(--dy,0)) rotate(var(--rot,0));transition:transform .6s var(--ease),opacity .5s var(--ease),filter .5s var(--ease)}
-  .cover-inner{border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:3/4;animation:bob 6s ease-in-out infinite;animation-delay:var(--delay,0s)}
+  .cover-inner{position:relative;border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:3/4;animation:bob 6s ease-in-out infinite;animation-delay:var(--delay,0s)}
   @keyframes bob{50%{transform:translateY(-12px)}}
   .cover-art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff}
   .cover-art .cat{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.92}
@@ -651,7 +651,7 @@
     .work .wrap{row-gap:34px}
     .work .section-head{margin-bottom:12px}
     .work .cover{transform:rotate(var(--rot,0))}
-    .work .cover-inner{animation:none}
+    .work .cover-inner{animation:none;border-radius:16px;clip-path:inset(0 round 16px)}
     .work .cover[data-project="modulos"]{margin-top:0}
   }
 </style>
